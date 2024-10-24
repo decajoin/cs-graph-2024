@@ -41,17 +41,21 @@ void drawDirectionCode(int direction[], int size, int startX, int startY, int st
     int currentX = startX;
     int currentY = startY;
 
-    putpixel(currentX, currentY, WHITE);
+    int nextX, nextY;
 
     // 根据方向编码绘制字符
     for (int i = 0; i < size; i++)
     {
         // 计算下一个点的坐标
-        currentX += Model[direction[i]][0] * stepSize;
-        currentY += Model[direction[i]][1] * stepSize;
+        nextX = currentX + Model[direction[i]][0] * stepSize;
+        nextY = currentY + Model[direction[i]][1] * stepSize;
 
-        // 绘制该点
-        putpixel(currentX, currentY, WHITE);
+        // 用线连接当前点和下一个点
+        line(currentX, currentY, nextX, nextY);
+
+        // 更新当前点为下一个点
+        currentX = nextX;
+        currentY = nextY;
     }
 }
 
