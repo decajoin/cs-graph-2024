@@ -103,9 +103,11 @@ int main()
     Point2D projected[4];           // 存储投影后的二维点
 
     // 旋转 -30 度后的三棱锥
+    // 图像坐标采用的是右手系，所以旋转角度为负数表示顺时针旋转
     Point3D rotatedPyramid[4];
     for (int i = 0; i < 4; ++i)
     {
+        // 每个顶点都顺时针旋转 30 度
         rotatedPyramid[i] = rotateY(pyramid[i], -30.0f);
     }
 
